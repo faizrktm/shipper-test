@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import './normalize.css';
 import './index.css';
-import App from './App';
+import Pages from './pages';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+const App = () => (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <BrowserRouter>
+      <Pages />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );
 
