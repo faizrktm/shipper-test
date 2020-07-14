@@ -10,13 +10,14 @@ const UIProvider = ({ children }) => {
 
   const toggleSidebar = () => {
     setState((prevState) => ({ ...prevState, sidebar: !prevState.sidebar }));
-  }
+  };
 
   return (
-    <UIContext.Provider value={{
-      state,
-      toggleSidebar,
-    }}
+    <UIContext.Provider
+      value={{
+        state,
+        toggleSidebar,
+      }}
     >
       {children}
     </UIContext.Provider>

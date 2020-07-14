@@ -12,7 +12,7 @@ import { selectColor } from '../helper/theme';
 
 const Header = () => {
   const { toggleSidebar } = useContext(UIContext);
-  return(
+  return (
     <Container>
       <Wrapper>
         <MenuButton onClick={toggleSidebar}>
@@ -31,18 +31,18 @@ const Header = () => {
           <Notification color="#000" size="1rem" />
         </Action>
         <Profile>
-          <Text
-            color="border"
-            weight="bold"
-            size="small"
-          >
-            Hello, <Text color="blue" weight="bold" size="small"> John Smith</Text>
+          <Text color="border" weight="bold" size="small">
+            Hello,{' '}
+            <Text color="blue" weight="bold" size="small">
+              {' '}
+              John Smith
+            </Text>
           </Text>
           <ProfilePicture />
         </Profile>
       </Wrapper>
     </Container>
-  )
+  );
 };
 
 export default Header;
@@ -83,7 +83,7 @@ const Wrapper = styled.div`
 const LogoBtn = styled.a`
   height: 1.5rem;
   width: auto;
-  .large{
+  .large {
     display: none;
   }
 
@@ -104,7 +104,9 @@ const Action = styled.a`
   align-items: center;
   justify-content: center;
 
-  ${({ active }) => active && `
+  ${({ active }) =>
+    active &&
+    `
     &:before {
       content: '';
       position: absolute;

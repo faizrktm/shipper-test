@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { selectColor, getTextSize } from "../../helper/theme";
+import { selectColor, getTextSize } from '../../helper/theme';
 
 const Text = styled.span`
   font-size: ${({ size }) => getTextSize(size)};

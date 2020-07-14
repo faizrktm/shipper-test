@@ -28,7 +28,9 @@ const Link = styled(NavLink)`
   border-left: 0.25rem solid transparent;
   padding: 1rem 0 1rem 1rem;
 
-  ${({ isActive }) => isActive() && `
+  ${({ isActive }) =>
+    isActive() &&
+    `
     font-weight: bold;
     background-color: ${selectColor('background')} !important;
     border-color: ${selectColor('brand')} !important;
@@ -39,7 +41,7 @@ const Link = styled(NavLink)`
     }
   `}
 
-  &:hover{
+  &:hover {
     font-weight: bold;
     background-color: ${selectColor('background')};
     border-color: ${selectColor('brand')};

@@ -9,8 +9,11 @@ import { Text } from '../General';
 import { selectColor } from '../../helper/theme';
 
 const Sidebar = () => {
-  const { state: { sidebar }, toggleSidebar } = useContext(UIContext);
-  return(
+  const {
+    state: { sidebar },
+    toggleSidebar,
+  } = useContext(UIContext);
+  return (
     <Container active={sidebar}>
       <CloseButton onClick={toggleSidebar}>
         <Close color="#fff" />
@@ -18,17 +21,18 @@ const Sidebar = () => {
       <Wrapper active={sidebar}>
         <Profile>
           <ProfilePicture />
-          <Text
-            color="border"
-            weight="bold"
-          >
-            Hello, <Text color="blue" weight="bold"> John Smith</Text>
+          <Text color="border" weight="bold">
+            Hello,{' '}
+            <Text color="blue" weight="bold">
+              {' '}
+              John Smith
+            </Text>
           </Text>
         </Profile>
         <Menu />
       </Wrapper>
     </Container>
-  )
+  );
 };
 
 export default Sidebar;
@@ -39,8 +43,9 @@ const Container = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${({ active }) => active ? 'rgba(0,0,0,0.5)' : 'transparent'};
-  visibility: ${({ active }) => active ? 'visible' : 'hidden'};
+  background-color: ${({ active }) =>
+    active ? 'rgba(0,0,0,0.5)' : 'transparent'};
+  visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
   transition-property: visibility, background-color;
   transition-duration: 0s, 0.2s;
   transition-timing-function: linear, ease;
@@ -60,12 +65,13 @@ const Wrapper = styled.div`
   background-color: white;
   width: 100%;
   height: 100%;
-  transform: ${({ active }) => active ? 'translateX(-4rem)' : 'translateX(-200%)'};
-  visibility: ${({ active }) => active ? 'visible' : 'hidden'};
+  transform: ${({ active }) =>
+    active ? 'translateX(-4rem)' : 'translateX(-200%)'};
+  visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
   transition-property: visibility, transform;
   transition-duration: 0s, 0.2s;
   transition-timing-function: linear, ease;
-  transition-delay: ${({ active }) => active ? '0s' : '0.2s, 0s'};
+  transition-delay: ${({ active }) => (active ? '0s' : '0.2s, 0s')};
 
   ${breakpoint('desktop')`
     transform: none;
@@ -91,7 +97,6 @@ const CloseButton = styled.button`
     display: none;
   `}
 `;
-
 
 const Profile = styled.div`
   display: flex;

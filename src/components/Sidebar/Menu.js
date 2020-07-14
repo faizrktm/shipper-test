@@ -20,13 +20,17 @@ const Menu = () => {
     <Container>
       <ListContainer>
         {Object.keys(menus).map((item) => (
-          <List key={item} to={item} title={menus[item]} active={item === location.pathname} />
+          <List
+            key={item}
+            to={item}
+            title={menus[item]}
+            active={item === location.pathname}
+          />
         ))}
       </ListContainer>
     </Container>
   );
-}
-
+};
 
 export default Menu;
 

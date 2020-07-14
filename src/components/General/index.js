@@ -2,10 +2,6 @@ import Text from './Text';
 import FloatingButton from './FloatingButton';
 import Button from './Button';
 import TextInput from './TextInput';
+import Card from './Card';
 
-export {
-  Button,
-  FloatingButton,
-  Text,
-  TextInput,
-}
+export { Button, FloatingButton, Text, TextInput, Card };

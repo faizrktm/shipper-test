@@ -13,9 +13,7 @@ const Page = ({ children }) => (
     <Header />
     <Main>
       <Sidebar />
-      <Wrapper>
-        {children}
-      </Wrapper>
+      <Wrapper>{children}</Wrapper>
     </Main>
   </UIProvider>
 );

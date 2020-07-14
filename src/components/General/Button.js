@@ -1,19 +1,17 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { selectColor } from "../../helper/theme";
+import { selectColor } from '../../helper/theme';
 import Text from './Text';
 
 const Button = ({ icon, label, ...props }) => (
   <Container {...props}>
-    <Text color="white" weight="bold" size="small">{label}</Text>
-    {icon && (
-      <IconWrapper>
-        {icon}
-      </IconWrapper>
-    )}
+    <Text color="white" weight="bold" size="small">
+      {label}
+    </Text>
+    {icon && <IconWrapper>{icon}</IconWrapper>}
   </Container>
-)
+);
 
 const IconWrapper = styled.div`
   margin-left: 1rem;

@@ -4,11 +4,7 @@ import { selectColor } from '../../helper/theme';
 
 const TextInput = ({ icon, className, ...props }) => (
   <Container className={className}>
-    {icon && (
-      <IconWrapper>
-        {icon}
-      </IconWrapper>
-    )}
+    {icon && <IconWrapper>{icon}</IconWrapper>}
     <input type="text" {...props} />
   </Container>
 );
