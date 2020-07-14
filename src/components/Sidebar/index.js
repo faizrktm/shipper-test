@@ -5,8 +5,8 @@ import { Close } from 'grommet-icons';
 
 import { UIContext } from '../UIState';
 import Menu from './Menu';
-import { Text } from '../General';
-import { selectColor } from '../../helper/theme';
+import { ProfilePicture, Text } from '../General';
+import Person from '../../assets/person.jpeg';
 
 const Sidebar = () => {
   const {
@@ -20,7 +20,7 @@ const Sidebar = () => {
       </CloseButton>
       <Wrapper active={sidebar}>
         <Profile>
-          <ProfilePicture />
+          <ProfilePicture src={Person} />
           <Text color="border" weight="bold">
             Hello,{' '}
             <Text color="blue" weight="bold">
@@ -99,19 +99,12 @@ const CloseButton = styled.button`
 `;
 
 const Profile = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 1rem;
   padding: 1rem;
 
   ${breakpoint('desktop')`
     display: none;
   `}
-`;
-
-const ProfilePicture = styled.div`
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  background-color: ${selectColor('border')};
-  margin-bottom: 1rem;
 `;

@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { Menu, Phone, Notification } from 'grommet-icons';
 
-import { Text } from './General';
+import { ProfilePicture, Text } from './General';
 import ShipperLogo from '../assets/logo.png';
 import ShipperLogoSmall from '../assets/logo-small.png';
 import theme from '../config/theme';
 import { UIContext } from './UIState';
 import { selectColor } from '../helper/theme';
+import Person from '../assets/person.jpeg';
 
 const Header = () => {
   const { toggleSidebar } = useContext(UIContext);
@@ -38,7 +39,7 @@ const Header = () => {
               John Smith
             </Text>
           </Text>
-          <ProfilePicture />
+          <ProfilePicture src={Person} size="small" />
         </Profile>
       </Wrapper>
     </Container>
@@ -125,16 +126,9 @@ const Profile = styled.div`
   display: none;
 
   ${breakpoint('desktop')`
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
+    grid-template-columns: auto auto;
+    grid-column-gap: 1rem;
   `}
-`;
-
-const ProfilePicture = styled.div`
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  margin-left: 1rem;
-  background-color: ${selectColor('border')};
 `;
