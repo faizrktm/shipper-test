@@ -6,6 +6,7 @@ import theme from '../config/theme';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { UIProvider } from './UIState';
+import breakpoint from 'styled-components-breakpoint';
 
 const Page = ({ children }) => (
   <UIProvider>
@@ -33,4 +34,8 @@ const Wrapper = styled.div`
   padding: 1rem;
   flex: 1;
   align-self: stretch;
+
+  ${breakpoint('desktop')`
+    padding: 2rem 1.5rem 2rem 1.5rem;
+  `}
 `;

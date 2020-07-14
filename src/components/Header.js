@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { Menu, Phone, Notification } from 'grommet-icons';
 
+import { Text } from './General';
 import ShipperLogo from '../assets/logo.png';
 import ShipperLogoSmall from '../assets/logo-small.png';
 import theme from '../config/theme';
@@ -29,6 +30,16 @@ const Header = () => {
         <Action href="#" active>
           <Notification color="#000" size="1rem" />
         </Action>
+        <Profile>
+          <Text
+            color="border"
+            weight="bold"
+            size="small"
+          >
+            Hello, <Text color="blue" weight="bold" size="small"> John Smith</Text>
+          </Text>
+          <ProfilePicture />
+        </Profile>
       </Wrapper>
     </Container>
   )
@@ -88,7 +99,7 @@ const LogoBtn = styled.a`
 
 const Action = styled.a`
   position: relative;
-  margin-left: 1rem;
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,4 +116,23 @@ const Action = styled.a`
       background-color: ${selectColor('brand')};
     }
   `};
+`;
+
+const Profile = styled.div`
+  padding-left: 2rem;
+  display: none;
+
+  ${breakpoint('desktop')`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `}
+`;
+
+const ProfilePicture = styled.div`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+  background-color: ${selectColor('border')};
 `;

@@ -6,6 +6,7 @@ const theme = {
       textMild: '#404852',
       background: '#FAFAFA',
       border: '#ccc',
+      blue: '#00ACEE',
     },
     header: {
       height: '4rem'

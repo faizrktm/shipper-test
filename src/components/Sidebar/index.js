@@ -5,6 +5,8 @@ import { Close } from 'grommet-icons';
 
 import { UIContext } from '../UIState';
 import Menu from './Menu';
+import { Text } from '../General';
+import { selectColor } from '../../helper/theme';
 
 const Sidebar = () => {
   const { state: { sidebar }, toggleSidebar } = useContext(UIContext);
@@ -14,6 +16,15 @@ const Sidebar = () => {
         <Close color="#fff" />
       </CloseButton>
       <Wrapper active={sidebar}>
+        <Profile>
+          <ProfilePicture />
+          <Text
+            color="border"
+            weight="bold"
+          >
+            Hello, <Text color="blue" weight="bold"> John Smith</Text>
+          </Text>
+        </Profile>
         <Menu />
       </Wrapper>
     </Container>
@@ -79,4 +90,23 @@ const CloseButton = styled.button`
   ${breakpoint('desktop')`
     display: none;
   `}
+`;
+
+
+const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  ${breakpoint('desktop')`
+    display: none;
+  `}
+`;
+
+const ProfilePicture = styled.div`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: ${selectColor('border')};
+  margin-bottom: 1rem;
 `;
