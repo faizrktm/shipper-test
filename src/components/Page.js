@@ -37,7 +37,7 @@ const Main = styled.main`
 `;
 
 const Wrapper = styled.div`
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   flex: 1;
   align-self: stretch;
 
