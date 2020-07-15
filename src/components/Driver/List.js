@@ -22,6 +22,10 @@ const Container = styled.div`
   grid-gap: 1rem;
   padding: 1rem 0;
 
+  ${breakpoint('tablet')`
+    grid-template-columns: auto auto;
+  `}
+
   ${breakpoint('desktop')`
     grid-template-columns: auto auto auto auto;
   `}
