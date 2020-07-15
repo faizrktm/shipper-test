@@ -3,14 +3,24 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import Card from './Card';
 
+const days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
 const List = () => (
   <Container>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    <Card
+      id="KOB209"
+      name="Jonathan Smith"
+      phone="0822 8281 7733"
+      schedule={days.join(', ')}
+      percentage={63}
+    />
+    <Card
+      id="KOB209"
+      name="Jonathan Smith"
+      phone="0822 8281 7733"
+      schedule={days.join(', ')}
+      percentage={30}
+    />
   </Container>
 );
 
