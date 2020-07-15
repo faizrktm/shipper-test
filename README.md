@@ -2,7 +2,7 @@
 
 Web based dashboard for Shipper with only Driver Page available.
 
-Demo available at: [https://shipper-cyan.vercel.app/drivers](https://shipper-cyan.vercel.app/drivers)
+Demo available at: [https://shipper-test.vercel.app/drivers](https://shipper-test.vercel.app/drivers)
 
 ## Getting Started
 
