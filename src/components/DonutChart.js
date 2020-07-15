@@ -18,10 +18,10 @@ import { Text } from './General';
 const LabelChart = ({ percentage, title }) => (
   <LabelContainer>
     <Wrapper>
-      <Text color="brand" weight="bold">
+      <Text color={percentage > 0 ? 'brand' : 'border'} weight="bold">
         {percentage}%
       </Text>
-      <Text size="small">{title}</Text>
+      {percentage > 0 && <Text size="small">{title}</Text>}
     </Wrapper>
   </LabelContainer>
 );
