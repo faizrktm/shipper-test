@@ -17,8 +17,15 @@ const Info = ({ label, text }) => (
   </Wrapper>
 );
 
+/**
+ *
+ * Component for Driver data
+ * Only assume the driver is in the critical mode when ontime percentage is below 50%
+ * and above 0%.
+ * 0% probably indicate a new driver, maybe need more parameter to determined this
+ */
 const Card = ({ id, name, phone, schedule, percentage, picture }) => {
-  const critical = percentage < 50;
+  const critical = percentage < 50 && percentage > 0;
   return (
     <CardComponent>
       <Header critical={critical}>
