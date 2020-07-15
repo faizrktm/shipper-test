@@ -25,7 +25,10 @@ const UIProvider = ({ children }) => {
 };
 
 UIProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export { UIProvider, UIContext };

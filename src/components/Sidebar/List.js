@@ -1,9 +1,16 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { selectColor } from '../../helper/theme';
 
+/**
+ *
+ * @param {string} to link pathname to navigate user
+ * @param {string} title
+ * @param {bool} active to indicate current pathname is the same as selected link
+ */
 const List = ({ to, title, active }) => (
   <Container>
     <Link to={to} isActive={() => active}>
@@ -12,6 +19,16 @@ const List = ({ to, title, active }) => (
     </Link>
   </Container>
 );
+
+List.defaultProps = {
+  active: false,
+};
+
+List.propTypes = {
+  to: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+};
 
 export default memo(List);
 

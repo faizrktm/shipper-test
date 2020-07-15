@@ -1,17 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { selectColor } from '../../helper/theme';
 import Text from './Text';
 
-const Button = ({ icon, label, ...props }) => (
-  <Container {...props}>
+/**
+ *
+ * @param {node} icon
+ * @param {string} label
+ * @param {string} className used when you override this component style with styled component
+ *
+ * The rest of the props indicated by spread operator is the
+ * initial props from button itself, ex: onClick, type, etc.
+ */
+const Button = ({ icon, label, className, ...props }) => (
+  <Container className={className} {...props}>
     <Text color="white" weight="bold" size="small">
       {label}
     </Text>
     {icon && <IconWrapper>{icon}</IconWrapper>}
   </Container>
 );
+
+Button.defaultProps = {
+  icon: null,
+  className: '',
+};
+
+Button.propTypes = {
+  icon: PropTypes.node,
+  label: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
 
 const IconWrapper = styled.div`
   margin-left: 1rem;

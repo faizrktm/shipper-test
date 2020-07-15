@@ -1,13 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { selectColor, getImageSize } from '../../helper/theme';
+import { selectColor, getImageSize, sizes } from '../../helper/theme';
 
+/**
+ *
+ * @param {string} size
+ *
+ * The rest of the props indicated by spread operator is the
+ * initial props from img itself, ex: src, alt, etc.
+ */
 const ProfilePicture = ({ size, ...props }) => (
   <PictureWrapper size={size}>
     <Picture {...props} size={size} />
   </PictureWrapper>
 );
+
+ProfilePicture.defaultProps = {
+  size: 'medium',
+};
+
+ProfilePicture.propTypes = {
+  size: PropTypes.oneOf(sizes),
+};
 
 export default ProfilePicture;
 

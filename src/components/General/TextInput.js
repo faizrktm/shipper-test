@@ -1,13 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import { selectColor } from '../../helper/theme';
 
+/**
+ *
+ * @param {node} icon
+ * @param {string} label
+ * @param {string} className used when you override this component style with styled component
+ *
+ * The rest of the props indicated by spread operator is the
+ * initial props from input itself, ex: value, onChange, etc
+ */
 const TextInput = ({ icon, className, ...props }) => (
   <Container className={className}>
     {icon && <IconWrapper>{icon}</IconWrapper>}
     <input type="text" {...props} />
   </Container>
 );
+
+TextInput.defaultProps = {
+  icon: null,
+  className: '',
+};
+
+TextInput.propTypes = {
+  icon: PropTypes.node,
+  className: PropTypes.string,
+};
 
 export default TextInput;
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { selectColor } from '../helper/theme';
@@ -17,6 +18,13 @@ const Page = ({ children }) => (
     </Main>
   </UIProvider>
 );
+
+Page.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 
 export default Page;
 
