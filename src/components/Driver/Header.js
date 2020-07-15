@@ -65,6 +65,7 @@ const StyledFloatingButton = styled(FloatingButton)`
   ${breakpoint('desktop')`
     display: none;
   `}
+  z-index: 2;
 `;
 
 const StyledButton = styled(Button)`

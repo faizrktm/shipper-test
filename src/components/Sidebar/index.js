@@ -50,12 +50,12 @@ const Container = styled.div`
   transition-duration: 0s, 0.2s;
   transition-timing-function: linear, ease;
   transition-delay: 0.2s, 0s;
+  z-index: 1000;
 
   ${breakpoint('desktop')`
     position: relative;
     background-color: white;
     visibility: visible;
-    z-index: 1000;
     width: 14rem;
   `}
 `;
