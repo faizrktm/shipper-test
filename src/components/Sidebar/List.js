@@ -42,7 +42,7 @@ const Link = styled(NavLink)`
   color: ${selectColor('text')};
   display: flex;
   align-items: center;
-  border-left: 0.25rem solid transparent;
+  border-left: 0.5rem solid transparent;
   padding: 1rem 0 1rem 1rem;
 
   ${({ isActive }) =>

@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { Add, FormSearch } from 'grommet-icons';
@@ -39,10 +39,10 @@ const Header = () => {
         />
       </ActionWrapper>
     </Container>
-  )
+  );
 };
 
-export default memo(Header);
+export default Header;
 
 const Container = styled.div`
   display: flex;

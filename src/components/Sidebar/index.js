@@ -49,7 +49,7 @@ const Container = styled.div`
   transition-property: visibility, background-color;
   transition-duration: 0s, 0.2s;
   transition-timing-function: linear, ease;
-  transition-delay: 0.2s, 0s;
+  transition-delay: 0s, 0s;
   z-index: 1000;
 
   ${breakpoint('desktop')`
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
   visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
   transition-property: visibility, transform;
   transition-duration: 0s, 0.2s;
-  transition-timing-function: linear, ease;
+  transition-timing-function: linear, ease-out;
   transition-delay: ${({ active }) => (active ? '0s' : '0.2s, 0s')};
 
   ${breakpoint('desktop')`
