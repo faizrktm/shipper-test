@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { More, StatusWarning } from 'grommet-icons';
@@ -66,7 +66,7 @@ Card.propTypes = {
   picture: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
-export default Card;
+export default memo(Card);
 
 const Header = styled.div`
   padding: 1rem;
