@@ -19,6 +19,8 @@ FloatingButton.propTypes = {
   icon: PropTypes.node.isRequired,
 };
 
+export default FloatingButton;
+
 const Container = styled.button`
   padding: 1rem;
   border-radius: 50%;
@@ -31,5 +33,3 @@ const Container = styled.button`
   align-items: center;
   justify-content: center;
 `;
-
-export default FloatingButton;

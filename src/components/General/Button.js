@@ -34,6 +34,8 @@ Button.propTypes = {
   className: PropTypes.string,
 };
 
+export default Button;
+
 const IconWrapper = styled.div`
   margin-left: 1rem;
   display: flex;
@@ -54,5 +56,3 @@ const Container = styled.button`
     opacity: 0.8;
   }
 `;
-
-export default Button;
