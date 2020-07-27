@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useQuery } from '@apollo/client';
 
 import Page from '../components/Page';
 import Header from '../components/Driver/Header';
 import List from '../components/Driver/List';
-import { ReduxerProvider } from '../modules/Reduxer';
-import { reducer, initialState } from '../modules/driver';
+import { Text } from '../components/General';
+import { GET_DRIVERS } from '../modules/query';
 
-const Driver = () => (
-  <ReduxerProvider reducer={reducer} initialState={initialState}>
+const Driver = () => {
+  const { loading, error, data, refetch } = useQuery(GET_DRIVERS);
+  console.log('rendering', data);
+
+  const searchDrivers = useCallback((name) => {
+    refetch({ q: name });
+  }, [refetch]);
+
+  return (
     <Page>
-      <Header />
-      <List />
+      <Header onSearch={searchDrivers} />
+      {loading && (
+        <Text>Loading</Text>
+      )}
+      {error && (
+        <Text>Something went wrong</Text>
+      )}
+      {data && (
+        <List drivers={data.drivers} />
+      )}
     </Page>
-  </ReduxerProvider>
-);
+  );
+};
 
 export default Driver;

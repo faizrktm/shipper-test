@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { Add, FormSearch } from 'grommet-icons';
@@ -6,16 +6,13 @@ import { Add, FormSearch } from 'grommet-icons';
 import { Button, FloatingButton, Text, TextInput } from '../General';
 import useDebounce from '../../helper/useDebounce';
 import useNoInitialMount from '../../helper/useNoInitialMount';
-import useDispatch from '../../modules/useDispatch';
-import { searchDriver } from '../../modules/driver';
 
-const Header = () => {
-  const dispatch = useDispatch();
+const Header = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState('');
   const debounceStream = useDebounce(searchValue, 700);
 
   useNoInitialMount(() => {
-    dispatch(searchDriver(debounceStream));
+    onSearch(debounceStream);
   }, [debounceStream]);
 
   return (
@@ -42,7 +39,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header, () => true);
 
 const Container = styled.div`
   display: flex;
