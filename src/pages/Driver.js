@@ -9,24 +9,20 @@ import { GET_DRIVERS } from '../modules/query';
 
 const Driver = () => {
   const { loading, error, data, refetch } = useQuery(GET_DRIVERS);
-  console.log('rendering', data);
 
-  const searchDrivers = useCallback((name) => {
-    refetch({ q: name });
-  }, [refetch]);
+  const searchDrivers = useCallback(
+    (name) => {
+      refetch({ q: name });
+    },
+    [refetch]
+  );
 
   return (
     <Page>
       <Header onSearch={searchDrivers} />
-      {loading && (
-        <Text>Loading</Text>
-      )}
-      {error && (
-        <Text>Something went wrong</Text>
-      )}
-      {data && (
-        <List drivers={data.drivers} />
-      )}
+      {loading && <Text>Loading</Text>}
+      {error && <Text>Something went wrong</Text>}
+      {data && <List drivers={data.drivers} />}
     </Page>
   );
 };
