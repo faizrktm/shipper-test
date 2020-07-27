@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 import { Menu, Phone, Notification } from 'grommet-icons';
 
 import { ProfilePicture, Text } from './General';

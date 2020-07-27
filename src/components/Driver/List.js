@@ -1,49 +1,24 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 
 import Card from './Card';
-import { ReduxerContext } from '../../modules/Reduxer';
-import useDispatch from '../../modules/useDispatch';
-import { fetchDriver } from '../../modules/driver';
-import { Text } from '../General';
 
-const List = () => {
-  const { state: { data: { result } } } = useContext(ReduxerContext);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchDriver());
-  }, []);
-
-  if(!result.length){
-    return (
-      <Container>
-        <Text>No Data Found</Text>
-      </Container>
-    )
-  }
-
+const List = ({ drivers }) => {
   return (
-    <Container>
-      {result.map(({
-        id,
-        name,
-        phone,
-        schedule,
-        percentage,
-      }) => (
+    <Container data-testid="driver-list">
+      {drivers.map(({ id, name, phone_number, schedule, percentage }) => (
         <Card
           key={id}
           id={id}
           name={name}
-          phone={phone}
+          phone={phone_number}
           schedule={schedule.join(', ')}
           percentage={percentage}
         />
       ))}
     </Container>
-  )
+  );
 };
 
 export default List;

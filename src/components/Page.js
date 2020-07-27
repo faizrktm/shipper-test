@@ -7,7 +7,7 @@ import theme from '../config/theme';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { UIProvider } from './UIState';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 
 const Page = ({ children }) => (
   <UIProvider>
