@@ -2,14 +2,14 @@ import theme from '../config/theme';
 
 export const sizes = ['small', 'medium', 'large', 'xlarge'];
 
-const textSizes = {
+export const textSizes = {
   small: '0.8rem',
   medium: '1rem',
   large: '1.5rem',
   xlarge: '2rem',
 };
 
-const imgSizes = {
+export const imgSizes = {
   small: '2.5rem',
   medium: '5rem',
   large: '7.5rem',

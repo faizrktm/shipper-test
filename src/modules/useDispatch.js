@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { ReduxerContext } from "./Reduxer";
+import { useContext } from 'react';
+import { ReduxerContext } from './Reduxer';
 
 /**
  * Custom useDispatch
@@ -13,10 +13,10 @@ const useDispatch = () => {
   const { dispatch: dispatcher, state } = useContext(ReduxerContext);
 
   const dispatch = (prop) => {
-    if(typeof prop === 'function'){
-      prop.call(this, dispatcher, state);
-    } else if(typeof prop === 'object'){
-      dispatcher(prop);
+    if (typeof prop === 'function') {
+      return prop.call(this, dispatcher, state);
+    } else if (typeof prop === 'object') {
+      return dispatcher(prop);
     }
   };
 
