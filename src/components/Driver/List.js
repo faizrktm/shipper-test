@@ -1,19 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 
 import Card from './Card';
 
 const List = ({ drivers }) => {
   return (
-    <Container>
-      {drivers.map(({
-        id,
-        name,
-        phone_number,
-        schedule,
-        percentage,
-      }) => (
+    <Container data-testid="driver-list">
+      {drivers.map(({ id, name, phone_number, schedule, percentage }) => (
         <Card
           key={id}
           id={id}
@@ -24,7 +18,7 @@ const List = ({ drivers }) => {
         />
       ))}
     </Container>
-  )
+  );
 };
 
 export default List;

@@ -1,19 +1,26 @@
 import React, { useState, memo } from 'react';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 import { Add, FormSearch } from 'grommet-icons';
 
 import { Button, FloatingButton, Text, TextInput } from '../General';
+import Switcher from '../../components/Modal/Switcher';
 import useDebounce from '../../helper/useDebounce';
+import useModal from '../../helper/useModal';
 import useNoInitialMount from '../../helper/useNoInitialMount';
 
 const Header = ({ onSearch }) => {
+  const { modal, handleModal, props } = useModal();
   const [searchValue, setSearchValue] = useState('');
   const debounceStream = useDebounce(searchValue, 700);
 
   useNoInitialMount(() => {
     onSearch(debounceStream);
   }, [debounceStream]);
+
+  const onClickAddDriver = () => {
+    handleModal('add-driver');
+  };
 
   return (
     <Container>
@@ -23,7 +30,10 @@ const Header = ({ onSearch }) => {
         </Text>
         <SubText size="small">Daftar Driver yang bekerja dengan Anda</SubText>
       </Title>
-      <StyledFloatingButton icon={<Add color="white" />} />
+      <StyledFloatingButton
+        icon={<Add color="white" />}
+        onClick={onClickAddDriver}
+      />
       <ActionWrapper>
         <StyledTextInput
           icon={<FormSearch color="#ff4646" size="1.5rem" />}
@@ -31,10 +41,12 @@ const Header = ({ onSearch }) => {
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <StyledButton
+          onClick={onClickAddDriver}
           icon={<Add color="white" size="1rem" />}
           label="TAMBAH DRIVER"
         />
       </ActionWrapper>
+      {modal && <Switcher modal={modal} handleModal={handleModal} {...props} />}
     </Container>
   );
 };
