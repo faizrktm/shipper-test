@@ -7,15 +7,7 @@ import { Card as CardComponent, Text, ProfilePicture } from '../General';
 import { selectColor } from '../../helper/theme';
 import Person from '../../assets/person.jpeg';
 import DonutChart from '../DonutChart';
-
-const Info = ({ label, text }) => (
-  <Wrapper>
-    <Title color="textMild" size="small">
-      {label}
-    </Title>
-    <Text size="small">{text}</Text>
-  </Wrapper>
-);
+import InfoCard from './InfoCard';
 
 /**
  *
@@ -28,7 +20,7 @@ const Card = ({ id, name, phone, schedule, percentage, picture }) => {
   const critical = percentage < 50 && percentage > 0;
   return (
     <CardComponent>
-      <Header critical={critical}>
+      <Header critical={critical} role="header">
         <Text color={critical ? 'white' : 'textMild'} size="small">
           ID Driver{' '}
           <Text weight="bold" color={critical ? 'white' : 'brand'} size="small">
@@ -36,15 +28,17 @@ const Card = ({ id, name, phone, schedule, percentage, picture }) => {
           </Text>
         </Text>
         <ActionWrapper>
-          {critical && <StatusWarning color="white" size="1.25rem" />}
+          {critical && (
+            <StatusWarning color="white" size="1.25rem" role="alert" />
+          )}
           <More size="1.25rem" color={critical ? 'white' : '#404852'} />
         </ActionWrapper>
       </Header>
       <Content>
         <ProfilePicture src={picture} alt="person image" />
-        <Info label="Nama Driver" text={name} />
-        <Info label="Telepon" text={phone} />
-        <Info label="Jadwal" text={schedule} />
+        <InfoCard label="Nama Driver" text={name} />
+        <InfoCard label="Telepon" text={phone} />
+        <InfoCard label="Jadwal" text={schedule} />
         <ChartWrapper>
           <DonutChart percentage={percentage} title="Ontime" />
         </ChartWrapper>
@@ -83,16 +77,6 @@ const Header = styled.div`
 const Content = styled.div`
   padding: 1rem;
   position: relative;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-`;
-
-const Title = styled(Text)`
-  margin-bottom: 0.5rem;
 `;
 
 const ChartWrapper = styled.div`
