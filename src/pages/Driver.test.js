@@ -20,25 +20,48 @@ const lessPerformant = {
   percentage: 30,
 };
 
-const mocks = [
-  {
-    request: {
-      query: GET_DRIVERS,
-    },
-    result: {
-      data: {
-        drivers: [performant, lessPerformant],
-      },
+const mocks = {
+  request: {
+    query: GET_DRIVERS,
+  },
+  result: {
+    data: {
+      drivers: [performant, lessPerformant],
     },
   },
-];
+};
+
+const errorMocks = {
+  request: {
+    query: GET_DRIVERS,
+  },
+  error: new Error('Oops something went wrong'),
+};
 
 describe('driver page integration test', () => {
   test('success render drivers data', async () => {
-    const { getByTestId } = render(<Driver apolloMockForTestOnly={mocks} />);
+    const { getByTestId, getByText } = render(
+      <Driver apolloMockForTestOnly={[mocks]} />
+    );
 
+    // expect loading UI shown
+    expect(getByText(/loading/i)).toBeInTheDocument();
+
+    // wait until next render
     await waitFor(() => screen.getByTestId('driver-list'));
 
+    // expect drivers data rendered successfully
     expect(getByTestId('driver-list')).not.toBeEmptyDOMElement();
+  });
+
+  test('show error UI', async () => {
+    const { getByText } = render(
+      <Driver apolloMockForTestOnly={[errorMocks]} />
+    );
+
+    // wait until next render and expect error from query
+    await waitFor(() =>
+      expect(getByText(/something went wrong/i)).toBeInTheDocument()
+    );
   });
 });

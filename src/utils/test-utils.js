@@ -15,7 +15,7 @@ const TestWrapper = ({ children }) => {
     }
   }, []);
   return (
-    <MockedProvider mocks={mocks}>
+    <MockedProvider mocks={mocks} addTypename={false}>
       <BrowserRouter>
         <Switch>{children}</Switch>
       </BrowserRouter>
