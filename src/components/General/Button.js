@@ -14,8 +14,8 @@ import Text from './Text';
  * The rest of the props indicated by spread operator is the
  * initial props from button itself, ex: onClick, type, etc.
  */
-const Button = ({ icon, label, className, ...props }) => (
-  <Container className={className} {...props}>
+const Button = ({ icon, label, className, fill, ...props }) => (
+  <Container fill={fill.toString()} className={className} {...props}>
     <Text color="white" weight="bold" size="small">
       {label}
     </Text>
@@ -26,12 +26,14 @@ const Button = ({ icon, label, className, ...props }) => (
 Button.defaultProps = {
   icon: null,
   className: '',
+  fill: false,
 };
 
 Button.propTypes = {
   icon: PropTypes.node,
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
+  fill: PropTypes.bool,
 };
 
 export default Button;
@@ -51,6 +53,7 @@ const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: ${({ fill }) => (fill === 'true' ? '100%' : 'auto')};
 
   &:hover {
     opacity: 0.8;
