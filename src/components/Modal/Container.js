@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { Close } from 'grommet-icons';
+import { breakpoint } from 'styled-components-breakpoint';
 
 const Container = (ModalComponent) => ({ modal, handleModal, ...rest }) => {
   return ReactDOM.createPortal(
@@ -10,12 +11,16 @@ const Container = (ModalComponent) => ({ modal, handleModal, ...rest }) => {
         <ModalHeader>
           <h2>{modal.replace(/-/g, ' ')}</h2>
           <button onClick={() => handleModal()}>
-            <Close color="#000" size="1rem"/>
+            <Close color="#000" size="1rem" />
           </button>
         </ModalHeader>
         <ModalBody>
           <Suspense fallback={<div>Loading...</div>}>
-            <ModalComponent modal={modal} {...rest} />
+            <ModalComponent
+              modal={modal}
+              {...rest}
+              dismissModal={handleModal}
+            />
           </Suspense>
         </ModalBody>
       </ModalContent>
@@ -44,7 +49,7 @@ const ModalContainer = styled.div`
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -52,11 +57,27 @@ const ModalContent = styled.div`
   overflow-y: scroll;
   background-color: white;
   border-radius: 8px;
-  max-height: 95vh;
-  min-height: 50vh;
-  min-width: 40vw;
-  max-width: 80vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  ${breakpoint('tablet')`
+    max-height: 95vh;
+    min-height: 50vh;
+    min-width: 50vw;
+    max-width: 80vw;
+  `}
+
+  ${breakpoint('desktop')`
+    max-height: 95vh;
+    min-height: 50vh;
+    min-width: 40vw;
+    max-width: 80vw;
+  `}
 `;
 
 const ModalHeader = styled.div`
@@ -76,4 +97,5 @@ const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  flex: 1;
 `;
