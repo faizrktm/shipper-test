@@ -1,5 +1,4 @@
 import React from 'react';
-import { GraphQLError } from 'graphql';
 
 import { render, fireEvent, waitFor } from '../../utils/test-utils';
 import AddDriver from './AddDriver';

@@ -51,6 +51,19 @@ yarn build && yarn start
 
 Open [http://localhost:3000](http://localhost:3000) to see the website
 
+## Testing
+This project contain unit testing and integration testing. All the test files have *.test.js name.
+To launch test runner in interactive watch mode for current uncommit codes, run
+
+```
+yarn test
+```
+To watch all test including commited codes, run
+
+```
+yarn test --watchAll
+```
+
 ## Deployment
 
 For this project we are using [Vercel](https://vercel.com/) because it is easy and support Create React App project.
