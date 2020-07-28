@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_DRIVERS = gql`
   query GetDrivers($q: String) {
@@ -13,15 +13,17 @@ export const GET_DRIVERS = gql`
 `;
 
 export const ADD_DRIVER = gql`
-  mutation AddDriver($name: String!, $phone_number: String!){
-    success,
-    message,
-    driver {
-      id
-      name
-      phone_number
-      schedule
-      percentage
+  mutation AddDriver($name: String!, $phone_number: String!) {
+    addDriver(name: $name, phone_number: $phone_number) {
+      success
+      message
+      driver {
+        id
+        name
+        phone_number
+        schedule
+        percentage
+      }
     }
   }
 `;
