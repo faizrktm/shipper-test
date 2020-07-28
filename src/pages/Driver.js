@@ -10,12 +10,10 @@ import { GET_DRIVERS } from '../modules/query';
 const Driver = () => {
   const { loading, error, data, refetch } = useQuery(GET_DRIVERS);
 
-  const searchDrivers = useCallback(
-    (name) => {
-      refetch({ q: name });
-    },
-    [refetch]
-  );
+  // refetch should be available even on initial load
+  const searchDrivers = useCallback((name) => {
+    refetch({ q: name });
+  }, []);
 
   return (
     <Page>
