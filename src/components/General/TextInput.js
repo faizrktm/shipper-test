@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -13,12 +13,12 @@ import { selectColor } from '../../helper/theme';
  * The rest of the props indicated by spread operator is the
  * initial props from input itself, ex: value, onChange, etc
  */
-const TextInput = ({ icon, className, ...props }) => (
+const TextInput = forwardRef(({ icon, className, ...props }, ref) => (
   <Container className={className}>
     {icon && <IconWrapper>{icon}</IconWrapper>}
-    <input type="text" {...props} />
+    <Input type="text" {...props} data-testid="text-input" ref={ref} />
   </Container>
-);
+));
 
 TextInput.defaultProps = {
   icon: null,
@@ -46,4 +46,8 @@ const Container = styled.div`
   border-radius: 0.25rem;
   padding: 0.5rem;
   border: 1px solid ${selectColor('border')};
+`;
+
+const Input = styled.input`
+  flex: 1;
 `;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { breakpoint } from 'styled-components-breakpoint';
 import { Close } from 'grommet-icons';
 
 import { UIContext } from '../UIState';
